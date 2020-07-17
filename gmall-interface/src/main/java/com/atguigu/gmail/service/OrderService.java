@@ -1,5 +1,9 @@
 package com.atguigu.gmail.service;
 
+import com.atguigu.gmail.bean.UserAddress;
+
+import java.util.List;
+
 /**
  * @author hezihao
  * @version 1.0
@@ -14,5 +18,5 @@ public interface OrderService {
      *
      * @param userId 用户Id
      */
-    void initOrder(String userId);
+    List<UserAddress> initOrder(String userId);
 }

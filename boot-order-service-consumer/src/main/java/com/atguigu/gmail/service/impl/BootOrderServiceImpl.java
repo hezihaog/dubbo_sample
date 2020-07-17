@@ -1,5 +1,6 @@
 package com.atguigu.gmail.service.impl;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.atguigu.gmail.bean.UserAddress;
 import com.atguigu.gmail.service.OrderService;
 import com.atguigu.gmail.service.UserService;
@@ -22,8 +23,11 @@ import java.util.List;
  * 2.服务消费者在注册中心订阅服务提供者的服务地址
  */
 @Service
-public class OrderServiceImpl implements OrderService {
-    @Autowired
+public class BootOrderServiceImpl implements OrderService {
+    /**
+     * 依赖注入dubbo的远程服务，因为服务是远程服务，不能用spring的@Autowired注解了
+     */
+    @Reference
     private UserService userService;
 
     public List<UserAddress> initOrder(String userId) {

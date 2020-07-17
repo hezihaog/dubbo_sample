@@ -1,8 +1,9 @@
-package com.atguigu.gmail.service.impl;
+package com.atguigu.gmail.impl;
 
+import com.alibaba.dubbo.config.annotation.Service;
 import com.atguigu.gmail.bean.UserAddress;
 import com.atguigu.gmail.service.UserService;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,8 +16,11 @@ import java.util.List;
  * <p>
  * 用户接口实现类
  */
+//注解@Service，标识暴露给dubbo的服务
 @Service
-public class UserServiceImpl implements UserService {
+//因为和spring的@Service注解同名，这里用@Component注解也是一样的
+@Component
+public class BootUserServiceImpl implements UserService {
     public List<UserAddress> getUserAddressList(String userId) {
         UserAddress userAddress1 = new UserAddress(1,
                 "北京市昌平区xx科技园综合楼3层",
