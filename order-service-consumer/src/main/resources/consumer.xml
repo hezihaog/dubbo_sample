@@ -17,10 +17,23 @@
     <dubbo:application name="order-service-consumer"/>
 
     <!-- 2.指定注册中心的地址 -->
-    <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
+    <!-- 2.1check属性，配置注册中心不存在时，是否报错，默认为true，就是会报错 -->
+    <dubbo:registry address="zookeeper://127.0.0.1:2181" check="false"/>
 
     <!-- 3.声明需要远程调用的远程服务接口，生成远程服务代理 -->
-    <dubbo:reference id="userService" interface="com.atguigu.gmail.service.UserService"/>
+    <!-- 3.1 check属性，启动时是否检查依赖的服务是否启动，默认为true，启动会检查，会导致如果依赖的服务没有启动，就会报错，一般我们设置为false，调用的时候，才去检查对方服务状态 -->
+    <!-- 3.2 timeout属性，配置消费者调用服务提供者的方法超过一定时间没响应，就判定为超时，避免大量的阻塞，单位为毫秒，默认值为1000，就是一秒 -->
+    <!-- 3.3 retries属性，重试次数，调用远程方法超时时，进行重试，不包含第一次调用（如果服务提供方有多个服务，重试请求会分散到不同的服务中） -->
+    <!-- 幂等方法（设置重试次数，来提升系统的性能），非幂等方法（不能设置重试次数） -->
+    <!-- 幂等：就是方法无论运行多少次，都是一个效果，例如数据库的查询、删除、修改 -->
+    <!-- 非幂等：每次方法运行都是产生一个新的效果，例如数据库新增 -->
+    <!-- 如不需要重试，设置值为0即可，代表不重试 -->
+    <dubbo:reference id="userService" interface="com.atguigu.gmail.service.UserService"
+                     check="false" timeout="3000" retries="3"/>
+
+    <!-- 3.2每个去配置check属性是很麻烦的，我们可以统一配置所有消费者的缺省配置，我们可以默认所有服务都不检查，如果有某一项服务不一样，则单独配置即可 -->
+    <!-- 3.3 timeout属性，为所有的消费者提供缺省设置，而不需要去dubbo:reference下每个都配置 -->
+    <dubbo:consumer check="false" timeout="1000"/>
 
     <!-- 配置监控中心，2种方式，protocol属性写协议，如果写registry，则代表自动从注册中心查找监控中心的位置 -->
     <dubbo:monitor protocol="registry"/>
