@@ -19,10 +19,10 @@ import java.util.List;
 //注解@Service，标识暴露给dubbo的服务，timeout属性配置远程服务调用超时时间，version属性配置多版本功能，可实现灰度
 @Service(timeout = 3000, version = "*")
 //因为和spring的@Service注解同名，这里用@Component注解也是一样的
-@Component("userService1")
-public class BootUserServiceImpl implements UserService {
+@Component("userService2")
+public class BootUserServiceImpl2 implements UserService {
     public List<UserAddress> getUserAddressList(String userId) {
-        System.out.println("---------- 线上版本订单服务，版本1.0.0 ----------");
+        System.out.println("---------- 灰度订单服务，版本2.0.0 ----------");
 
         UserAddress userAddress1 = new UserAddress(1,
                 "北京市昌平区xx科技园综合楼3层",

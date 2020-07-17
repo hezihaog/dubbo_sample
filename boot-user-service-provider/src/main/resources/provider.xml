@@ -20,12 +20,12 @@
         <dubbo:method name="getUserAddressList" timeout="1000"/>
     </dubbo:service>
     <!-- 服务实现 -->
-    <bean id="userServiceImpl1" class="com.atguigu.gmail.service.impl.UserServiceImpl"/>
+    <bean id="userServiceImpl1" class="com.atguigu.gmail.impl.BootUserServiceImpl"/>
 
     <!-- 配置一个灰度服务实现 -->
     <dubbo:service interface="com.atguigu.gmail.service.UserService" ref="userServiceImpl2"
                    version="2.0.0"/>
-    <bean id="userServiceImpl2" class="com.atguigu.gmail.service.impl.UserServiceImpl2"/>
+    <bean id="userServiceImpl2" class="com.atguigu.gmail.impl.BootUserServiceImpl2"/>
 
     <!-- 配置监控中心，2种方式，protocol属性写协议，如果写registry，则代表自动从注册中心查找监控中心的位置 -->
     <dubbo:monitor protocol="registry"/>
