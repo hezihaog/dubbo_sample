@@ -3,6 +3,7 @@ package com.atguigu.gmail.impl;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.atguigu.gmail.bean.UserAddress;
 import com.atguigu.gmail.service.UserService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -21,6 +22,12 @@ import java.util.List;
 //因为和spring的@Service注解同名，这里用@Component注解也是一样的
 @Component("userService1")
 public class BootUserServiceImpl implements UserService {
+    /**
+     * Hystrix容错处理，该方法会被Hystrix代理，来处理容错异常
+     *
+     * @param userId 用户Id
+     */
+    @HystrixCommand
     public List<UserAddress> getUserAddressList(String userId) {
         System.out.println("---------- 线上版本订单服务，版本1.0.0 ----------");
 

@@ -3,6 +3,7 @@ package com.atguigu.gmail;
 import com.alibaba.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 
 /**
  * @author hezihao
@@ -12,6 +13,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 //注解@EnableDubbo，开启dubbo的注解功能
 @EnableDubbo
+//开启服务容错
+@EnableHystrix
 @SpringBootApplication
 public class BootConsumerApplication {
     public static void main(String[] args) {
