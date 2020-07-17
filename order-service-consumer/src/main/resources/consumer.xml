@@ -28,8 +28,10 @@
     <!-- 幂等：就是方法无论运行多少次，都是一个效果，例如数据库的查询、删除、修改 -->
     <!-- 非幂等：每次方法运行都是产生一个新的效果，例如数据库新增 -->
     <!-- 如不需要重试，设置值为0即可，代表不重试 -->
+    <!-- 3.4 dubbo还支持多版本，就是灰度，version属性指定使用调用哪个版本的实现，还支持*通配符来表示随机选一个来调用，来达到灰度 -->
     <dubbo:reference id="userService" interface="com.atguigu.gmail.service.UserService"
-                     check="false" timeout="3000" retries="3"/>
+                     check="false" timeout="3000" retries="3"
+                     version="*"/>
 
     <!-- 3.2每个去配置check属性是很麻烦的，我们可以统一配置所有消费者的缺省配置，我们可以默认所有服务都不检查，如果有某一项服务不一样，则单独配置即可 -->
     <!-- 3.3 timeout属性，为所有的消费者提供缺省设置，而不需要去dubbo:reference下每个都配置 -->

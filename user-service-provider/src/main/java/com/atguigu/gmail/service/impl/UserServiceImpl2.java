@@ -13,12 +13,12 @@ import java.util.List;
  * <p>
  * @date 2020/7/16 9:05 下午
  * <p>
- * 用户接口实现类
+ * 测试dubbo的多版本功能
  */
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl2 implements UserService {
     public List<UserAddress> getUserAddressList(String userId) {
-        System.out.println("---------- 线上版本订单服务，版本1.0.0 ----------");
+        System.out.println("---------- 灰度订单服务，版本2.0.0 ----------");
 
         UserAddress userAddress1 = new UserAddress(1,
                 "北京市昌平区xx科技园综合楼3层",
