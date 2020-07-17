@@ -20,6 +20,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 1）导入dubbo的starter，在application.properties配置属性，使用@Service暴露服务，使用@Reference引用服务，并且Application入口类必须加上@EnableDubbo注解来开启注解功能
  * 2）导入dubbo的starter，保留dubbo的xml配置文件，再在Application入口类上使用@ImportResource注解，引入xml配置文件，使用原始方式，就不需要用注解了
  * 3）使用注解API的方式，就是SpringJavaConfig的方式提供类对象，将每个组件手动创建放到Spring容器中，让dubbo扫描出组件
+ * 注意！！！
+ * 上面3种配置方式，不能共存，只能选一种，否则会出现重复定义的异常，例如注解和JavaConfig的方式都做了，而@EnableDubbo内部又使用@DubboComponentScan注解，导致2种配置方式都开启了，出现了重复定义
  */
 //1）注解方式，使用@EnableDubbo注解，开启基于注解的dubbo功能，例如@Service注解才能生效
 @EnableDubbo
