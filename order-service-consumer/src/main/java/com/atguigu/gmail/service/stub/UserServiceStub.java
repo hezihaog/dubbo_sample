@@ -20,7 +20,7 @@ public class UserServiceStub implements UserService {
     private final UserService userService;
 
     /**
-     * 必须提供一个有惨构造器，dubbo会传入远程服务的代理对象，通过这个对象，来进行调用远程方法
+     * 必须提供一个有参构造器，dubbo会传入远程服务的代理对象，通过这个对象，来进行调用远程方法
      *
      * @param userService 远程服务的代理对象
      */

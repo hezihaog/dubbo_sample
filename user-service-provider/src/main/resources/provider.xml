@@ -14,7 +14,7 @@
     <!-- 3.指定通信规则（通信协议、通信端口） -->
     <dubbo:protocol name="dubbo" port="20880"/>
 
-    <!-- 暴露服务，interface属性指定服务接口，ref指定服务具体实现 -->
+    <!-- 4.暴露服务，interface属性指定服务接口，ref指定服务具体实现 -->
     <dubbo:service interface="com.atguigu.gmail.service.UserService" ref="userServiceImpl1"
                    version="1.0.0">
         <dubbo:method name="getUserAddressList" timeout="1000"/>
@@ -22,12 +22,12 @@
     <!-- 服务实现 -->
     <bean id="userServiceImpl1" class="com.atguigu.gmail.service.impl.UserServiceImpl"/>
 
-    <!-- 配置一个灰度服务实现 -->
+    <!-- 5.配置一个灰度服务实现 -->
     <dubbo:service interface="com.atguigu.gmail.service.UserService" ref="userServiceImpl2"
                    version="2.0.0"/>
     <bean id="userServiceImpl2" class="com.atguigu.gmail.service.impl.UserServiceImpl2"/>
 
-    <!-- 配置监控中心，2种方式，protocol属性写协议，如果写registry，则代表自动从注册中心查找监控中心的位置 -->
+    <!-- 6.配置监控中心，2种方式，protocol属性写协议，如果写registry，则代表自动从注册中心查找监控中心的位置 -->
     <dubbo:monitor protocol="registry"/>
     <!-- 或者手动指定位置 -->
     <!--    <dubbo:monitor address="127.0.0.1:7070"/>-->

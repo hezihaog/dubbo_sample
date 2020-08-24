@@ -9,6 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
+        <!-- 公共API接口 -->
         <dependency>
             <groupId>com.atguigu.gmail</groupId>
             <artifactId>gmall-interface</artifactId>

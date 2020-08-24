@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface UserService {
     /**
-     * 按照用户Id，获取用户的所有搜索地址
+     * 按照用户Id，获取用户的所有收货地址
      *
      * @param userId 用户Id
      */

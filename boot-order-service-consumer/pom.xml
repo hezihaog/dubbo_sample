@@ -21,7 +21,7 @@
     </properties>
 
     <dependencies>
-        <!-- 依赖基础接口 -->
+        <!-- 公共API -->
         <dependency>
             <groupId>com.atguigu.gmail</groupId>
             <artifactId>gmall-interface</artifactId>

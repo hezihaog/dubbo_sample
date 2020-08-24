@@ -23,6 +23,9 @@ import java.util.List;
  */
 @Service
 public class OrderServiceImpl implements OrderService {
+    /**
+     * 注入用户服务
+     */
     @Autowired
     private UserService userService;
 
